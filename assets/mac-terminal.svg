@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 310" width="100%" height="310">
+  <defs>
+    <!-- macOS Terminal Styling -->
+    <style>
+      .title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif; font-size: 13px; fill: #9da5b4; font-weight: 500; }
+      .term { font-family: "SF Mono", "Menlo", "Monaco", "JetBrains Mono", Consolas, monospace; font-size: 12px; line-height: 1.6; }
+      .prompt-user { fill: #48b0ff; font-weight: bold; }
+      .prompt-at { fill: #abb2bf; }
+      .prompt-path { fill: #ffd700; font-weight: bold; }
+      .prompt-sign { fill: #e5c07b; font-weight: bold; }
+      .cmd-text { fill: #ffffff; font-weight: 600; }
+      .log-time { fill: #7f848e; }
+      .log-info { fill: #61afef; font-weight: bold; }
+      .log-prefix { fill: #98c379; font-weight: bold; }
+      .log-accent { fill: #c678dd; font-weight: bold; }
+      .log-highlight { fill: #e5c07b; }
+      .log-success { fill: #98c379; font-weight: bold; }
+      .log-text { fill: #abb2bf; }
+      .cursor { fill: #528bff; }
+
+      /* Плавное появление и переключение строк */
+      @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+      .cur-anim { animation: blink 1s infinite; }
+    </style>
+
+    <!-- Клип-пути для анимации набора текста (эффект печатания на клавиатуре) -->
+    <!-- Шаг 1: Печатание cd DRplugins (длина ~100px) -->
+    <clipPath id="clipCmd1">
+      <rect x="0" y="0" width="0" height="25">
+        <animate attributeName="width" values="0; 0; 110; 110; 0" keyTimes="0; 0.04; 0.12; 0.94; 1" dur="14s" repeatCount="indefinite" fill="freeze" />
+      </rect>
+    </clipPath>
+
+    <!-- Шаг 2: Печатание ./start.sh (длина ~85px) -->
+    <clipPath id="clipCmd2">
+      <rect x="0" y="0" width="0" height="25">
+        <animate attributeName="width" values="0; 0; 90; 90; 0" keyTimes="0; 0.18; 0.26; 0.94; 1" dur="14s" repeatCount="indefinite" fill="freeze" />
+      </rect>
+    </clipPath>
+  </defs>
+
+  <!-- Внешняя рамка и фон окна macOS Terminal -->
+  <rect x="1" y="1" width="738" height="308" rx="10" ry="10" fill="#1e1e24" stroke="#333842" stroke-width="1.5" />
+
+  <!-- Верхняя шапка окна macOS с кнопками -->
+  <path d="M 1 11 C 1 5.5 5.5 1 11 1 L 729 1 C 734.5 1 739 5.5 739 11 L 739 34 L 1 34 Z" fill="#282c34" />
+  
+  <!-- Кнопки управления окном macOS (Закрыть, Свернуть, Развернуть) -->
+  <circle cx="20" cy="18" r="6" fill="#ff5f56" stroke="#e0443e" stroke-width="0.5" />
+  <circle cx="38" cy="18" r="6" fill="#ffbd2e" stroke="#dea123" stroke-width="0.5" />
+  <circle cx="56" cy="18" r="6" fill="#27c93f" stroke="#1aab29" stroke-width="0.5" />
+  
+  <!-- Заголовок окна macOS -->
+  <text x="370" y="22" text-anchor="middle" class="title">drelka — -zsh — 80×24</text>
+
+  <!-- Содержимое терминала -->
+  <g class="term" transform="translate(18, 58)">
+    
+    <!-- 1. ПЕРВАЯ СТРОКА: Переход в папку сервера -->
+    <g transform="translate(0, 0)">
+      <text y="0">
+        <tspan class="prompt-user">drelka@MacBook-Pro</tspan>
+        <tspan class="prompt-at">:</tspan>
+        <tspan class="prompt-path">~</tspan>
+        <tspan class="prompt-sign"> % </tspan>
+      </text>
+
+      <!-- Печатается команда cd DRplugins -->
+      <g transform="translate(162, 0)" clip-path="url(#clipCmd1)">
+        <text y="0" class="cmd-text">cd DRplugins</text>
+      </g>
+    </g>
+
+    <!-- 2. ВТОРАЯ СТРОКА: Папка сменилась на DRplugins и запуск скрипта -->
+    <g transform="translate(0, 26)">
+      <!-- Появляется после нажатия Enter на первой команде -->
+      <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0; 0.15; 0.16; 0.94; 1" dur="14s" repeatCount="indefinite" />
+      <text y="0">
+        <tspan class="prompt-user">drelka@MacBook-Pro</tspan>
+        <tspan class="prompt-at">:</tspan>
+        <tspan class="prompt-path">~/DRplugins</tspan>
+        <tspan class="prompt-sign"> % </tspan>
+      </text>
+
+      <!-- Печатается команда ./start.sh -->
+      <g transform="translate(232, 0)" clip-path="url(#clipCmd2)">
+        <text y="0" class="cmd-text">./start.sh</text>
+      </g>
+    </g>
+
+    <!-- 3. ЛОГИ СЕРВЕРА MINECRAFT (Появляются после запуска) -->
+    
+    <!-- Лог 1: Запуск ядра Paper -->
+    <g transform="translate(0, 56)">
+      <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0; 0.30; 0.32; 0.94; 1" dur="14s" repeatCount="indefinite" />
+      <text y="0">
+        <tspan class="log-time">[12:00:01] </tspan>
+        <tspan class="log-info">[Server thread/INFO]: </tspan>
+        <tspan class="log-text">Starting minecraft server version </tspan>
+        <tspan class="log-prefix">1.21.x (PaperMC/Folia)</tspan>
+      </text>
+    </g>
+
+    <!-- Лог 2: Инициализация DRplugins и Java 21 -->
+    <g transform="translate(0, 80)">
+      <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0; 0.42; 0.44; 0.94; 1" dur="14s" repeatCount="indefinite" />
+      <text y="0">
+        <tspan class="log-time">[12:00:01] </tspan>
+        <tspan class="log-info">[Server thread/INFO]: </tspan>
+        <tspan class="log-prefix">[DRplugins] </tspan>
+        <tspan class="log-text">Enabling core runtime (</tspan>
+        <tspan class="log-accent">Java 21, Gradle</tspan>
+        <tspan class="log-text">)...</tspan>
+      </text>
+    </g>
+
+    <!-- Лог 3: Подключение баз данных -->
+    <g transform="translate(0, 104)">
+      <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0; 0.54; 0.56; 0.94; 1" dur="14s" repeatCount="indefinite" />
+      <text y="0">
+        <tspan class="log-time">[12:00:02] </tspan>
+        <tspan class="log-info">[Server thread/INFO]: </tspan>
+        <tspan class="log-prefix">[DRplugins] </tspan>
+        <tspan class="log-text">Connecting HikariCP pool to </tspan>
+        <tspan class="log-highlight">MySQL &amp; SQLite</tspan>
+        <tspan class="log-text">... </tspan>
+        <tspan class="log-success">[CONNECTED]</tspan>
+      </text>
+    </g>
+
+    <!-- Лог 4: Загрузка модулей плагина -->
+    <g transform="translate(0, 128)">
+      <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0; 0.66; 0.68; 0.94; 1" dur="14s" repeatCount="indefinite" />
+      <text y="0">
+        <tspan class="log-time">[12:00:02] </tspan>
+        <tspan class="log-info">[Server thread/INFO]: </tspan>
+        <tspan class="log-prefix">[DRplugins] </tspan>
+        <tspan class="log-text">Registered 12 modules: </tspan>
+        <tspan class="log-accent">Auction, Clans, Backpack, Auth, Economy</tspan>
+      </text>
+    </g>
+
+    <!-- Лог 5: Успешный запуск и 20 TPS -->
+    <g transform="translate(0, 152)">
+      <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0; 0.76; 0.78; 0.94; 1" dur="14s" repeatCount="indefinite" />
+      <text y="0">
+        <tspan class="log-time">[12:00:03] </tspan>
+        <tspan class="log-info">[Server thread/INFO]: </tspan>
+        <tspan class="log-prefix">[DRplugins] </tspan>
+        <tspan class="log-success">✔ Done (0.284s)! Server is running on 20.0 TPS.</tspan>
+      </text>
+    </g>
+
+    <!-- 4. ИТОГОВАЯ КОМАНДНАЯ СТРОКА С МИГАЮЩИМ КУРСОРОМ -->
+    <g transform="translate(0, 180)">
+      <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0; 0.84; 0.86; 0.94; 1" dur="14s" repeatCount="indefinite" />
+      <text y="0">
+        <tspan class="prompt-user">drelka@MacBook-Pro</tspan>
+        <tspan class="prompt-at">:</tspan>
+        <tspan class="prompt-path">~/DRplugins</tspan>
+        <tspan class="prompt-sign"> % </tspan>
+        <tspan class="cmd-text">drplugins status</tspan>
+      </text>
+      <!-- Мигающий курсор macOS в конце строки -->
+      <rect x="345" y="-11" width="8" height="14" class="cursor cur-anim" />
+    </g>
+  </g>
+</svg>

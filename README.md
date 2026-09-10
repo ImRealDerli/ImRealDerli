@@ -43,14 +43,14 @@
 
 ###
 
-<!-- Статистика профиля GitHub (в стиле оригинальной темы Bear) -->
+<!-- Динамическая самообновляемая статистика GitHub -->
 <p align="center">
-  <img src="./assets/github-stats.svg" alt="GitHub Stats" />
+  <img src="https://github-readme-stats-fast.vercel.app/api?username=ImRealDerli&theme=bear&show_icons=true&hide_border=true&count_private=true&locale=ru" alt="GitHub Stats" />
 </p>
 
 ###
 
-<!-- Анимированная консоль сервера Minecraft -->
+<!-- Анимированный macOS Терминал: выбор папки, старт и логи сервера -->
 <p align="center">
-  <img src="./assets/minecraft-console.svg" width="720" alt="Minecraft Server Console" />
+  <img src="https://raw.githubusercontent.com/ImRealDerli/ImRealDerli/refs/heads/main/assets/mac-terminal.svg" width="740" alt="macOS Terminal" />
 </p>
