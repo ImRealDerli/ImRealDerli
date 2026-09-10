@@ -1,0 +1,300 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 520" width="100%" height="520">
+  <defs>
+    <!-- Градиенты ноутбука и рабочего стола macOS -->
+    <linearGradient id="macChassis" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3c4048" />
+      <stop offset="100%" stop-color="#24272c" />
+    </linearGradient>
+
+    <linearGradient id="macBase" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4a4f59" />
+      <stop offset="50%" stop-color="#353941" />
+      <stop offset="100%" stop-color="#202227" />
+    </linearGradient>
+
+    <linearGradient id="wallpaper" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141824" />
+      <stop offset="40%" stop-color="#191c2b" />
+      <stop offset="70%" stop-color="#2c1a32" />
+      <stop offset="100%" stop-color="#12131c" />
+    </linearGradient>
+
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+
+    <filter id="winShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.7" />
+    </filter>
+
+    <style>
+      .sys-font { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif; }
+      .term-font { font-family: "SF Mono", "Menlo", "JetBrains Mono", Consolas, monospace; font-size: 11px; }
+      
+      .menu-text { font-size: 9px; fill: #d1d5db; font-weight: 500; }
+      .prompt-u { fill: #48b0ff; font-weight: bold; }
+      .prompt-p { fill: #ffd700; font-weight: bold; }
+      .prompt-s { fill: #e5c07b; }
+      .cmd-text { fill: #ffffff; font-weight: bold; }
+      .t-time { fill: #6b7280; }
+      .t-info { fill: #60a5fa; font-weight: bold; }
+      .t-pref { fill: #4ade80; font-weight: bold; }
+      .t-acc { fill: #c084fc; font-weight: bold; }
+      .t-hi { fill: #fbbf24; }
+      .t-succ { fill: #4ade80; font-weight: bold; }
+      .t-txt { fill: #9ca3af; }
+      .t-cursor { fill: #38bdf8; }
+
+      @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+      .cursor-blink { animation: blink 1s infinite; }
+    </style>
+
+    <!-- Анимация набора текста cd ~/DRplugins -->
+    <clipPath id="typeCd">
+      <rect x="0" y="0" width="0" height="20">
+        <animate attributeName="width" values="0; 0; 130; 130; 0" keyTimes="0; 0.16; 0.25; 0.94; 1" dur="16s" repeatCount="indefinite" fill="freeze" />
+      </rect>
+    </clipPath>
+
+    <!-- Анимация набора текста ./start.sh -->
+    <clipPath id="typeStart">
+      <rect x="0" y="0" width="0" height="20">
+        <animate attributeName="width" values="0; 0; 90; 90; 0" keyTimes="0; 0.30; 0.38; 0.94; 1" dur="16s" repeatCount="indefinite" fill="freeze" />
+      </rect>
+    </clipPath>
+  </defs>
+
+  <!-- ==================== КОРПУС MACBOOK ==================== -->
+  
+  <!-- Тень от ноутбука -->
+  <ellipse cx="420" cy="485" rx="390" ry="16" fill="#000000" opacity="0.45" filter="blur(8px)" />
+
+  <!-- Крышка экрана (Space Gray) -->
+  <rect x="70" y="20" width="700" height="440" rx="18" fill="url(#macChassis)" stroke="#555a66" stroke-width="1.5" filter="url(#dropShadow)" />
+  
+  <!-- Внутренняя черная рамка экрана -->
+  <rect x="82" y="32" width="676" height="416" rx="10" fill="#050507" />
+
+  <!-- Экран MacBook (Рабочий стол macOS) -->
+  <rect x="88" y="38" width="664" height="404" rx="6" fill="url(#wallpaper)" />
+
+  <!-- Веб-камера / Вырез FaceTime сверху -->
+  <rect x="402" y="33" width="36" height="7" rx="3.5" fill="#050507" />
+  <circle cx="420" cy="36.5" r="2" fill="#1c2533" />
+  <circle cx="420" cy="36.5" r="0.8" fill="#38bdf8" opacity="0.7" />
+
+  <!-- ==================== РАБОЧИЙ СТОЛ macOS ==================== -->
+
+  <!-- 1. Верхняя панель меню macOS -->
+  <rect x="88" y="38" width="664" height="18" fill="#10131ab3" />
+  <g class="sys-font menu-text" transform="translate(100, 51)">
+    <!-- Логотип Apple  -->
+    <path d="M 0 -1.5 C 0.5 -2.5 1.5 -2.8 2.2 -2.5 C 2.8 -2.2 3.2 -1.8 3.5 -1.8 C 3.9 -1.8 4.3 -2.3 4.8 -2.5 C 5.5 -2.8 6.5 -2.5 7.1 -1.8 C 5.9 -1.1 5.8 0.8 7 1.4 C 6.5 2.5 5.5 4 4.5 4 C 3.8 4 3.4 3.5 2.8 3.5 C 2.2 3.5 1.7 4 1.1 4 C 0.2 3.8 -0.8 1.8 0 -1.5 Z" fill="#ffffff" transform="scale(0.9) translate(0, -2)" />
+    <text x="14" y="0" style="font-weight: 700; fill: #ffffff;">Terminal</text>
+    <text x="64" y="0">Shell</text>
+    <text x="96" y="0">Edit</text>
+    <text x="124" y="0">View</text>
+    <text x="156" y="0">Window</text>
+    <text x="202" y="0">Help</text>
+  </g>
+  <g class="sys-font menu-text" transform="translate(710, 51)" text-anchor="end">
+    <text x="0" y="0">100% 🔋  12:00</text>
+  </g>
+
+  <!-- 2. Панель Dock внизу экрана -->
+  <g transform="translate(325, 404)">
+    <!-- Стеклянная подложка Dock -->
+    <rect width="190" height="32" rx="9" fill="#ffffff18" stroke="#ffffff30" stroke-width="0.8" />
+    
+    <!-- Иконка 1: Finder -->
+    <rect x="10" y="4" width="24" height="24" rx="5" fill="#38bdf8" />
+    <circle cx="18" cy="13" r="1.5" fill="#ffffff" />
+    <circle cx="26" cy="13" r="1.5" fill="#ffffff" />
+    <path d="M 17 19 Q 22 23 27 19" stroke="#ffffff" stroke-width="1.5" fill="none" />
+
+    <!-- Иконка 2: Safari -->
+    <circle cx="56" cy="16" r="12" fill="#2563eb" />
+    <polygon points="56,7 59,16 56,25 53,16" fill="#ef4444" />
+    <polygon points="56,7 59,16 56,16" fill="#ffffff" />
+
+    <!-- Иконка 3: IntelliJ IDEA -->
+    <rect x="82" y="4" width="24" height="24" rx="5" fill="#000000" stroke="#ff318c" stroke-width="1.2" />
+    <text x="87" y="20" class="sys-font" style="font-size: 11px; font-weight: 900; fill: #ffffff;">IJ</text>
+
+    <!-- Иконка 4: Terminal (АКТИВНАЯ, ПО НЕЙ КЛИКАЕТ МЫШЬ) -->
+    <g id="dockTerminal">
+      <!-- Анимация подпрыгивания иконки терминала при клике (1.2s - 1.5s) -->
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,0; 0,-8; 0,0; 0,0" keyTimes="0; 0.08; 0.10; 0.13; 1" dur="16s" repeatCount="indefinite" />
+      <rect x="118" y="4" width="24" height="24" rx="5" fill="#18181b" stroke="#52525b" stroke-width="1" />
+      <text x="122" y="19" class="term-font" style="font-size: 11px; font-weight: bold; fill: #4ade80;">&gt;_</text>
+      <!-- Точка индикатора открытого приложения в Dock -->
+      <circle cx="130" cy="30" r="1.5" fill="#ffffff">
+        <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0; 0.11; 0.12; 0.94; 1" dur="16s" repeatCount="indefinite" />
+      </circle>
+    </g>
+
+    <!-- Иконка 5: Настройки -->
+    <rect x="154" y="4" width="24" height="24" rx="5" fill="#64748b" />
+    <circle cx="166" cy="16" r="5" fill="#334155" />
+    <circle cx="166" cy="16" r="2.5" fill="#cbd5e1" />
+  </g>
+
+  <!-- ==================== ОКНО ТЕРМИНАЛА (ОТКРЫВАЕТСЯ ПО КЛИКУ) ==================== -->
+  
+  <g transform="translate(130, 75)" filter="url(#winShadow)">
+    <!-- Анимация появления и раскрытия окна терминала (открывается на 1.4s, держится до 15.2s) -->
+    <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0; 0.10; 0.12; 0.95; 0.98" dur="16s" repeatCount="indefinite" />
+    <animateTransform attributeName="transform" type="scale" values="0.8; 0.8; 1; 1; 0.8" keyTimes="0; 0.10; 0.12; 0.95; 0.98" dur="16s" repeatCount="indefinite" />
+
+    <!-- Фон окна терминала -->
+    <rect width="580" height="280" rx="9" fill="#181a20" stroke="#333842" stroke-width="1.2" />
+
+    <!-- Верхняя шапка окна терминала -->
+    <path d="M 0 9 C 0 4 4 0 9 0 L 571 0 C 576 0 580 4 580 9 L 580 28 L 0 28 Z" fill="#22252c" />
+    
+    <!-- Кнопки macOS 🔴 🟡 🟢 -->
+    <circle cx="16" cy="14" r="5" fill="#ff5f56" />
+    <circle cx="32" cy="14" r="5" fill="#ffbd2e" />
+    <circle cx="48" cy="14" r="5" fill="#27c93f" />
+    <text x="290" y="18" text-anchor="middle" class="sys-font" style="font-size: 11px; fill: #9ca3af; font-weight: 500;">drelka — -zsh — 80×24</text>
+
+    <!-- Содержимое терминала -->
+    <g class="term-font" transform="translate(16, 48)">
+      
+      <!-- 1. Строка: Переход в папку cd ~/DRplugins -->
+      <g transform="translate(0, 0)">
+        <text y="0">
+          <tspan class="prompt-u">drelka@MacBook</tspan>
+          <tspan class="t-txt">:</tspan>
+          <tspan class="prompt-p">~</tspan>
+          <tspan class="prompt-s"> % </tspan>
+        </text>
+
+        <!-- Набор команды cd ~/DRplugins -->
+        <g transform="translate(132, 0)" clip-path="url(#typeCd)">
+          <text y="0" class="cmd-text">cd ~/DRplugins</text>
+        </g>
+      </g>
+
+      <!-- 2. Строка: Папка сменилась, ввод ./start.sh -->
+      <g transform="translate(0, 24)">
+        <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0; 0.27; 0.28; 0.95; 1" dur="16s" repeatCount="indefinite" />
+        <text y="0">
+          <tspan class="prompt-u">drelka@MacBook</tspan>
+          <tspan class="t-txt">:</tspan>
+          <tspan class="prompt-p">~/DRplugins</tspan>
+          <tspan class="prompt-s"> % </tspan>
+        </text>
+
+        <!-- Набор команды ./start.sh -->
+        <g transform="translate(195, 0)" clip-path="url(#typeStart)">
+          <text y="0" class="cmd-text">./start.sh</text>
+        </g>
+      </g>
+
+      <!-- 3. Логи запуска сервера и плагинов Minecraft -->
+      
+      <!-- Лог 1: Старт ядра Paper -->
+      <g transform="translate(0, 52)">
+        <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0; 0.40; 0.42; 0.95; 1" dur="16s" repeatCount="indefinite" />
+        <text y="0">
+          <tspan class="t-time">[12:00:01] </tspan>
+          <tspan class="t-info">[INFO] </tspan>
+          <tspan class="t-txt">Starting Minecraft server on </tspan>
+          <tspan class="t-pref">Paper 1.21.x / Folia</tspan>
+        </text>
+      </g>
+
+      <!-- Лог 2: Компиляция Java 21 и Gradle -->
+      <g transform="translate(0, 74)">
+        <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0; 0.50; 0.52; 0.95; 1" dur="16s" repeatCount="indefinite" />
+        <text y="0">
+          <tspan class="t-time">[12:00:01] </tspan>
+          <tspan class="t-info">[INFO] </tspan>
+          <tspan class="t-pref">[DRplugins] </tspan>
+          <tspan class="t-txt">Enabling runtime: </tspan>
+          <tspan class="t-acc">Java 21</tspan>
+          <tspan class="t-txt"> | Build: </tspan>
+          <tspan class="t-acc">Gradle &amp; Maven</tspan>
+        </text>
+      </g>
+
+      <!-- Лог 3: Подключение баз данных -->
+      <g transform="translate(0, 96)">
+        <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0; 0.60; 0.62; 0.95; 1" dur="16s" repeatCount="indefinite" />
+        <text y="0">
+          <tspan class="t-time">[12:00:02] </tspan>
+          <tspan class="t-info">[INFO] </tspan>
+          <tspan class="t-pref">[DRplugins] </tspan>
+          <tspan class="t-txt">HikariCP pool: </tspan>
+          <tspan class="t-hi">MySQL &amp; SQLite</tspan>
+          <tspan class="t-txt">... </tspan>
+          <tspan class="t-succ">[CONNECTED]</tspan>
+        </text>
+      </g>
+
+      <!-- Лог 4: Загрузка 12 плагинов -->
+      <g transform="translate(0, 118)">
+        <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0; 0.70; 0.72; 0.95; 1" dur="16s" repeatCount="indefinite" />
+        <text y="0">
+          <tspan class="t-time">[12:00:02] </tspan>
+          <tspan class="t-info">[INFO] </tspan>
+          <tspan class="t-pref">[DRplugins] </tspan>
+          <tspan class="t-txt">Loaded 12 modules: </tspan>
+          <tspan class="t-acc">Clans, Auction, Backpack, Auth, Economy</tspan>
+        </text>
+      </g>
+
+      <!-- Лог 5: Сервер готов, 20 TPS -->
+      <g transform="translate(0, 140)">
+        <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0; 0.80; 0.82; 0.95; 1" dur="16s" repeatCount="indefinite" />
+        <text y="0">
+          <tspan class="t-time">[12:00:03] </tspan>
+          <tspan class="t-pref">[DRplugins] </tspan>
+          <tspan class="t-succ">✔ Done (0.284s)! Server is running on 20.0 TPS.</tspan>
+        </text>
+      </g>
+
+      <!-- 4. Финальная командная строка с мигающим курсором -->
+      <g transform="translate(0, 168)">
+        <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0; 0.86; 0.88; 0.95; 1" dur="16s" repeatCount="indefinite" />
+        <text y="0">
+          <tspan class="prompt-u">drelka@MacBook</tspan>
+          <tspan class="t-txt">:</tspan>
+          <tspan class="prompt-p">~/DRplugins</tspan>
+          <tspan class="prompt-s"> % </tspan>
+          <tspan class="cmd-text">drplugins status</tspan>
+        </text>
+        <rect x="306" y="-10" width="7" height="13" class="t-cursor cursor-blink" />
+      </g>
+    </g>
+  </g>
+
+  <!-- ==================== КУРСОР МЫШИ (ДВИЖЕТСЯ К ИКОНКЕ ТЕРМИНАЛА) ==================== -->
+  
+  <g id="mouseCursor">
+    <!-- Траектория движения: из центра экрана прямо на иконку терминала в Dock, затем исчезает -->
+    <animateTransform attributeName="transform" type="translate"
+      values="280,210; 455,420; 455,420; 455,420"
+      keyTimes="0; 0.08; 0.12; 1"
+      dur="16s"
+      repeatCount="indefinite" />
+
+    <animate attributeName="opacity"
+      values="1; 1; 0; 0"
+      keyTimes="0; 0.11; 0.13; 1"
+      dur="16s"
+      repeatCount="indefinite" />
+
+    <!-- Настоящий курсор мыши macOS (стрелка с белой обводкой) -->
+    <path d="M 0 0 L 0 15 L 4 11.5 L 7.5 19 L 9.5 18 L 6 10.5 L 11 10.5 Z" fill="#000000" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round" />
+  </g>
+
+  <!-- ==================== НИЖНЯЯ ПЛАТФОРМА НОУТБУКА (ТОП-КЕЙС) ==================== -->
+  
+  <!-- Алюминиевая нижняя база MacBook с углублением для пальца -->
+  <path d="M 25 458 L 815 458 L 780 472 L 60 472 Z" fill="url(#macBase)" stroke="#666b75" stroke-width="1" />
+  <!-- Центральная выемка для открытия крышки MacBook -->
+  <rect x="385" y="458" width="70" height="5" rx="2.5" fill="#202226" />
+
+</svg>

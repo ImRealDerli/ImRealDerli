@@ -50,7 +50,7 @@
 
 ###
 
-<!-- Анимированный macOS Терминал: выбор папки, старт и логи сервера -->
+<!-- Анимированный MacBook: клик по терминалу в Dock, переход в ~/DRplugins, старт ./start.sh и логи плагинов -->
 <p align="center">
-  <img src="./assets/mac-terminal.svg" width="740" alt="macOS Terminal" />
+  <img src="./assets/macbook-interactive.svg" width="820" alt="Interactive MacBook" />
 </p>
