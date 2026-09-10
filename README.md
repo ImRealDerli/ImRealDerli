@@ -43,18 +43,14 @@
 
 ###
 
-<!-- Статистика профиля GitHub -->
+<!-- Статистика разработчика в стиле Minecraft -->
 <p align="center">
-  <img src="https://github-readme-stats-fast.vercel.app/api?username=ImRealDerli&theme=bear&show_icons=true&hide_border=true&count_private=true&locale=ru">
+  <img src="https://raw.githubusercontent.com/ImRealDerli/ImRealDerli/main/assets/minecraft-stats.svg" width="720" alt="Minecraft Dev Stats" />
 </p>
 
 ###
 
-<!-- Консоль загрузки плагинов Minecraft -->
+<!-- Анимированная консоль сервера Minecraft -->
 <p align="center">
   <img src="https://raw.githubusercontent.com/ImRealDerli/ImRealDerli/main/assets/minecraft-console.svg" width="720" alt="Minecraft Server Console" />
-</p>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/ImRealDerli/ImRealDerli/main/assets/minecraft-advancement.svg" width="340" alt="Minecraft Advancement" />
 </p>

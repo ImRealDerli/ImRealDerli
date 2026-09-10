@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 250" width="100%" height="250">
+  <defs>
+    <linearGradient id="xpGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#55ff55">
+        <animate attributeName="stop-color" values="#55ff55;#00aa00;#55ff55" dur="3s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#aaffaa">
+        <animate attributeName="stop-color" values="#aaffaa;#55ff55;#aaffaa" dur="3s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+    
+    <filter id="glow-gold" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <style>
+      .mc-font { font-family: "Courier New", Consolas, monospace; }
+      .title-bold { font-weight: 800; font-size: 16px; fill: #ffd700; text-shadow: 2px 2px #3f3600; }
+      .badge-text { font-weight: 900; font-size: 13px; fill: #55ffff; letter-spacing: 1.5px; }
+      .card-title { font-weight: 700; font-size: 12.5px; fill: #ffaa00; }
+      .card-val { font-weight: 600; font-size: 12px; fill: #e0e0e0; }
+      .lvl-text { font-weight: 900; font-size: 15px; fill: #55ff55; text-shadow: 1.5px 1.5px #003300; }
+      
+      @keyframes pulseBorder {
+        0%, 100% { stroke: #55ffff; }
+        50% { stroke: #aa00aa; }
+      }
+      .rank-box {
+        animation: pulseBorder 4s infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Внешняя рамка в стиле инвентаря Minecraft -->
+  <rect x="2" y="2" width="716" height="246" rx="8" fill="#18181b" stroke="#37373f" stroke-width="2"/>
+  <rect x="6" y="6" width="708" height="238" rx="6" fill="#1e1e24" stroke="#121214" stroke-width="2"/>
+
+  <!-- Заголовок карточки -->
+  <g transform="translate(20, 28)">
+    <!-- Иконка алмаза -->
+    <polygon points="12,0 20,8 12,22 4,8" fill="#55ffff"/>
+    <polygon points="12,3 17,8 12,18 7,8" fill="#00aaaa"/>
+    
+    <text x="30" y="16" class="mc-font title-bold">ImRealDerli ⚔️ MINECRAFT DEV PROFILE</text>
+    
+    <!-- Бейдж ранга S+ TIER -->
+    <rect x="540" y="-3" width="130" height="24" rx="4" fill="#0d1117" stroke="#55ffff" stroke-width="1.5" class="rank-box"/>
+    <text x="605" y="14" text-anchor="middle" class="mc-font badge-text">TIER: S+</text>
+  </g>
+
+  <!-- Minecraft Experience (XP) Bar -->
+  <g transform="translate(20, 62)">
+    <!-- Фон шкалы XP -->
+    <rect x="0" y="2" width="610" height="10" rx="3" fill="#090a0f" stroke="#333338" stroke-width="1"/>
+    <!-- Заполнение шкалы XP -->
+    <rect x="1" y="3" width="608" height="8" rx="2" fill="url(#xpGrad)"/>
+    <!-- Уровень опыта -->
+    <text x="645" y="12" class="mc-font lvl-text">LVL 100</text>
+  </g>
+
+  <!-- Сетка характеристик (6 блоков плагинной разработки) -->
+  <g transform="translate(20, 92)" class="mc-font">
+    <!-- Блок 1: Ядро и сборка -->
+    <g transform="translate(0, 0)">
+      <rect width="216" height="60" rx="5" fill="#131316" stroke="#2c2d35" stroke-width="1.2"/>
+      <circle cx="15" cy="19" r="4" fill="#ff5555"/>
+      <text x="26" y="23" class="card-title">CORE &amp; ENGINE</text>
+      <text x="14" y="44" class="card-val">Java 21 • Gradle &amp; Maven</text>
+    </g>
+
+    <!-- Блок 2: Платформы серверов -->
+    <g transform="translate(230, 0)">
+      <rect width="216" height="60" rx="5" fill="#131316" stroke="#2c2d35" stroke-width="1.2"/>
+      <circle cx="15" cy="19" r="4" fill="#55ff55"/>
+      <text x="26" y="23" class="card-title">TARGET PLATFORMS</text>
+      <text x="14" y="44" class="card-val">Paper • Purpur • Folia</text>
+    </g>
+
+    <!-- Блок 3: Сеть и прокси -->
+    <g transform="translate(460, 0)">
+      <rect width="216" height="60" rx="5" fill="#131316" stroke="#2c2d35" stroke-width="1.2"/>
+      <circle cx="15" cy="19" r="4" fill="#55ffff"/>
+      <text x="26" y="23" class="card-title">PROXY &amp; NETWORK</text>
+      <text x="14" y="44" class="card-val">Velocity • BungeeCord</text>
+    </g>
+
+    <!-- Блок 4: Базы данных -->
+    <g transform="translate(0, 72)">
+      <rect width="216" height="60" rx="5" fill="#131316" stroke="#2c2d35" stroke-width="1.2"/>
+      <circle cx="15" cy="19" r="4" fill="#ffaa00"/>
+      <text x="26" y="23" class="card-title">DATABASE &amp; POOL</text>
+      <text x="14" y="44" class="card-val">MySQL • SQLite • HikariCP</text>
+    </g>
+
+    <!-- Блок 5: Оптимизация -->
+    <g transform="translate(230, 72)">
+      <rect width="216" height="60" rx="5" fill="#131316" stroke="#2c2d35" stroke-width="1.2"/>
+      <circle cx="15" cy="19" r="4" fill="#ff55ff"/>
+      <text x="26" y="23" class="card-title">PERFORMANCE</text>
+      <text x="14" y="44" class="card-val">20.0 TPS • Async &amp; Safe</text>
+    </g>
+
+    <!-- Блок 6: Архитектура механик -->
+    <g transform="translate(460, 72)">
+      <rect width="216" height="60" rx="5" fill="#131316" stroke="#2c2d35" stroke-width="1.2"/>
+      <circle cx="15" cy="19" r="4" fill="#ffff55"/>
+      <text x="26" y="23" class="card-title">ARCHITECTURE</text>
+      <text x="14" y="44" class="card-val">Packets • NBT • GUI Menus</text>
+    </g>
+  </g>
+</svg>

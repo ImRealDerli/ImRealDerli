@@ -1,104 +1,139 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" width="100%" height="220">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 240" width="100%" height="240">
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#161b22"/>
       <stop offset="100%" stop-color="#0d1117"/>
     </linearGradient>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
+
+    <linearGradient id="barGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#238636"/>
+      <stop offset="100%" stop-color="#2ea043"/>
+    </linearGradient>
+
+    <style>
+      .terminal-header { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12px; fill: #8b949e; font-weight: 500; }
+      .code { font-family: "JetBrains Mono", Consolas, "Courier New", monospace; font-size: 12px; }
+      .time { fill: #8b949e; }
+      .info { fill: #58a6ff; font-weight: bold; }
+      .prefix { fill: #3fb950; font-weight: bold; }
+      .accent { fill: #d2a8ff; font-weight: 600; }
+      .highlight { fill: #ffa657; font-weight: 600; }
+      .success { fill: #3fb950; font-weight: bold; }
+      .text { fill: #c9d1d9; }
+      
+      /* Анимации последовательного появления строк (цикл 11 секунд) */
+      @keyframes line1 { 0%, 2% { opacity: 0; } 5%, 95% { opacity: 1; } 100% { opacity: 0; } }
+      @keyframes line2 { 0%, 14% { opacity: 0; } 17%, 95% { opacity: 1; } 100% { opacity: 0; } }
+      @keyframes line3 { 0%, 28% { opacity: 0; } 31%, 95% { opacity: 1; } 100% { opacity: 0; } }
+      @keyframes line4 { 0%, 42% { opacity: 0; } 45%, 95% { opacity: 1; } 100% { opacity: 0; } }
+      @keyframes line5 { 0%, 56% { opacity: 0; } 59%, 95% { opacity: 1; } 100% { opacity: 0; } }
+      @keyframes progBar { 0%, 68% { width: 0px; opacity: 0; } 70% { opacity: 1; } 82%, 95% { width: 220px; opacity: 1; } 100% { width: 0px; opacity: 0; } }
+      @keyframes line6 { 0%, 82% { opacity: 0; } 85%, 95% { opacity: 1; } 100% { opacity: 0; } }
+      
+      @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+      @keyframes pulseLight { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+      .anim-l1 { animation: line1 11s infinite; }
+      .anim-l2 { animation: line2 11s infinite; }
+      .anim-l3 { animation: line3 11s infinite; }
+      .anim-l4 { animation: line4 11s infinite; }
+      .anim-l5 { animation: line5 11s infinite; }
+      .anim-bar { animation: progBar 11s infinite; }
+      .anim-l6 { animation: line6 11s infinite; }
+      .cursor { animation: blink 1s infinite; fill: #58a6ff; }
+      .status-dot { animation: pulseLight 1.5s infinite; fill: #2ea043; }
+    </style>
   </defs>
 
-  <style>
-    .terminal-header { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12px; fill: #8b949e; font-weight: 500; }
-    .code { font-family: "JetBrains Mono", "Fira Code", Consolas, "Courier New", monospace; font-size: 12.5px; }
-    .time { fill: #8b949e; }
-    .info { fill: #58a6ff; font-weight: bold; }
-    .prefix { fill: #3fb950; font-weight: bold; }
-    .accent { fill: #d2a8ff; font-weight: 600; }
-    .highlight { fill: #ffa657; font-weight: 600; }
-    .success { fill: #3fb950; font-weight: bold; }
-    .text { fill: #c9d1d9; }
-    
-    @keyframes blink {
-      0%, 49% { opacity: 1; }
-      50%, 100% { opacity: 0; }
-    }
-    .cursor {
-      animation: blink 1s infinite;
-      fill: #58a6ff;
-    }
-  </style>
+  <!-- Окно консоли -->
+  <rect x="1" y="1" width="718" height="238" rx="8" fill="url(#bgGrad)" stroke="#30363d" stroke-width="1.5"/>
 
-  <!-- Container Box -->
-  <rect x="1" y="1" width="718" height="218" rx="10" fill="url(#bgGrad)" stroke="#30363d" stroke-width="1.5"/>
-
-  <!-- Terminal Top Bar -->
-  <path d="M 1 11 C 1 5.5 5.5 1 11 1 L 709 1 C 714.5 1 719 5.5 719 11 L 719 32 L 1 32 Z" fill="#21262d"/>
+  <!-- Шапка терминала -->
+  <path d="M 1 9 C 1 4.5 4.5 1 9 1 L 711 1 C 715.5 1 719 4.5 719 9 L 719 32 L 1 32 Z" fill="#21262d"/>
   <circle cx="18" cy="16" r="5.5" fill="#ff5f56"/>
   <circle cx="36" cy="16" r="5.5" fill="#ffbd2e"/>
   <circle cx="54" cy="16" r="5.5" fill="#27c93f"/>
-  <text x="360" y="21" text-anchor="middle" class="terminal-header">server@paper-mc: ~ /plugins/ImRealDerli</text>
+  <text x="360" y="21" text-anchor="middle" class="terminal-header">server@paper: ~ /plugins/DRplugins</text>
+  
+  <!-- Индикатор TPS онлайн -->
+  <circle cx="682" cy="16" r="4.5" class="status-dot"/>
+  <text x="672" y="20" text-anchor="end" class="code" style="font-size: 11px; fill: #3fb950; font-weight: bold;">20.0 TPS</text>
 
-  <!-- Console Log Content -->
-  <g class="code" transform="translate(18, 55)">
-    <!-- Line 1 -->
-    <text y="0">
-      <tspan class="time">[12:00:01] </tspan>
-      <tspan class="info">[INFO] </tspan>
-      <tspan class="text">Loading plugins for </tspan>
-      <tspan class="prefix">Paper 1.21.x / Folia / Purpur</tspan>
-      <tspan class="text">...</tspan>
-    </text>
+  <!-- Консольный вывод (анимированный) -->
+  <g class="code" transform="translate(20, 56)">
+    <!-- Строка 1 -->
+    <g class="anim-l1" transform="translate(0, 0)">
+      <text y="0">
+        <tspan class="time">[12:00:01] </tspan>
+        <tspan class="info">[INFO] </tspan>
+        <tspan class="text">Loading server plugins on </tspan>
+        <tspan class="prefix">PaperMC 1.21.x (Folia / Purpur)</tspan>
+        <tspan class="text">...</tspan>
+      </text>
+    </g>
 
-    <!-- Line 2 -->
-    <text y="24">
-      <tspan class="time">[12:00:01] </tspan>
-      <tspan class="info">[INFO] </tspan>
-      <tspan class="prefix">[DRplugins] </tspan>
-      <tspan class="text">Runtime: </tspan>
-      <tspan class="accent">Java 21</tspan>
-      <tspan class="text"> | Build: </tspan>
-      <tspan class="accent">Gradle &amp; Maven</tspan>
-    </text>
+    <!-- Строка 2 -->
+    <g class="anim-l2" transform="translate(0, 24)">
+      <text y="0">
+        <tspan class="time">[12:00:01] </tspan>
+        <tspan class="info">[INFO] </tspan>
+        <tspan class="prefix">[DRplugins] </tspan>
+        <tspan class="text">Compiling runtime with </tspan>
+        <tspan class="accent">Java 21</tspan>
+        <tspan class="text"> | Build engine: </tspan>
+        <tspan class="accent">Gradle &amp; Maven</tspan>
+      </text>
+    </g>
 
-    <!-- Line 3 -->
-    <text y="48">
-      <tspan class="time">[12:00:02] </tspan>
-      <tspan class="info">[INFO] </tspan>
-      <tspan class="prefix">[DRplugins] </tspan>
-      <tspan class="text">Connecting HikariCP pool to </tspan>
-      <tspan class="highlight">MySQL / SQLite</tspan>
-      <tspan class="text">... </tspan>
-      <tspan class="success">Connected!</tspan>
-    </text>
+    <!-- Строка 3 -->
+    <g class="anim-l3" transform="translate(0, 48)">
+      <text y="0">
+        <tspan class="time">[12:00:02] </tspan>
+        <tspan class="info">[INFO] </tspan>
+        <tspan class="prefix">[DRplugins] </tspan>
+        <tspan class="text">Connecting HikariCP pool to </tspan>
+        <tspan class="highlight">MySQL / SQLite</tspan>
+        <tspan class="text">... </tspan>
+        <tspan class="success">[CONNECTED]</tspan>
+      </text>
+    </g>
 
-    <!-- Line 4 -->
-    <text y="72">
-      <tspan class="time">[12:00:02] </tspan>
-      <tspan class="info">[INFO] </tspan>
-      <tspan class="prefix">[DRplugins] </tspan>
-      <tspan class="text">Modules initialized: </tspan>
-      <tspan class="accent">Core, Auction, Clans, Auth, Economy, Spawners</tspan>
-    </text>
+    <!-- Строка 4 -->
+    <g class="anim-l4" transform="translate(0, 72)">
+      <text y="0">
+        <tspan class="time">[12:00:02] </tspan>
+        <tspan class="info">[INFO] </tspan>
+        <tspan class="prefix">[DRplugins] </tspan>
+        <tspan class="text">Registering events: </tspan>
+        <tspan class="accent">Auction, Clans, Backpack, Auth, Economy, Spawners</tspan>
+      </text>
+    </g>
 
-    <!-- Line 5 -->
-    <text y="96">
-      <tspan class="time">[12:00:03] </tspan>
-      <tspan class="info">[INFO] </tspan>
-      <tspan class="prefix">[DRplugins] </tspan>
-      <tspan class="success">✔ All systems loaded successfully (0.421s) • 20.0 TPS</tspan>
-    </text>
+    <!-- Строка 5 (Прогресс бар) -->
+    <g class="anim-l5" transform="translate(0, 98)">
+      <text y="0">
+        <tspan class="time">[12:00:03] </tspan>
+        <tspan class="info">[INFO] </tspan>
+        <tspan class="text">Enabling modules: </tspan>
+      </text>
+      <!-- Рамка прогресс бара -->
+      <rect x="235" y="-10" width="222" height="12" rx="3" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+      <!-- Анимированное заполнение прогресс бара -->
+      <rect x="236" y="-9" width="220" height="10" rx="2" fill="url(#barGrad)" class="anim-bar"/>
+      <text x="470" y="0" class="success">100%</text>
+    </g>
 
-    <!-- Line 6 (Command Prompt + Cursor) -->
-    <text y="122">
-      <tspan class="prefix">&gt; </tspan>
-      <tspan class="text">drplugins status --performance --tps</tspan>
-      <rect x="298" y="-11" width="8" height="14" class="cursor"/>
-    </text>
+    <!-- Строка 6 (Готово + команда с курсором) -->
+    <g class="anim-l6" transform="translate(0, 126)">
+      <text y="0">
+        <tspan class="time">[12:00:03] </tspan>
+        <tspan class="success">[DRplugins] ✔ All 12 plugins loaded successfully (0.34s)!</tspan>
+      </text>
+      <text y="24">
+        <tspan class="prefix">&gt; </tspan>
+        <tspan class="text">drplugins status --all</tspan>
+        <rect x="186" y="13" width="7" height="13" class="cursor"/>
+      </text>
+    </g>
   </g>
 </svg>
