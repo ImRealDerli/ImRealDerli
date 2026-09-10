@@ -52,5 +52,5 @@
 
 <!-- Анимированный macOS Терминал: выбор папки, старт и логи сервера -->
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ImRealDerli/ImRealDerli/refs/heads/main/assets/mac-terminal.svg" width="740" alt="macOS Terminal" />
+  <img src="./assets/mac-terminal.svg" width="740" alt="macOS Terminal" />
 </p>
