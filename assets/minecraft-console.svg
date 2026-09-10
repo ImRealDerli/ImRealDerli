@@ -16,157 +16,107 @@
       .success { fill: #3fb950; font-weight: bold; }
       .text { fill: #c9d1d9; }
       .cmd { fill: #e6edf3; font-weight: 600; }
-      
-      /* Анимация открытия консоли (12-секундный цикл) */
-      @keyframes openTerminal {
-        0% { transform: scale(0.96) translateY(-10px); opacity: 0; }
-        4% { transform: scale(1) translateY(0); opacity: 1; }
-        94% { transform: scale(1) translateY(0); opacity: 1; }
-        98%, 100% { transform: scale(0.96) translateY(-10px); opacity: 0; }
-      }
-
-      /* Последовательное появление ввода и сообщений сервера */
-      @keyframes cmdType {
-        0%, 4% { opacity: 0; transform: translateX(-6px); }
-        7%, 94% { opacity: 1; transform: translateX(0); }
-        98%, 100% { opacity: 0; }
-      }
-      @keyframes msg1 {
-        0%, 14% { opacity: 0; transform: translateY(4px); }
-        17%, 94% { opacity: 1; transform: translateY(0); }
-        98%, 100% { opacity: 0; }
-      }
-      @keyframes msg2 {
-        0%, 28% { opacity: 0; transform: translateY(4px); }
-        31%, 94% { opacity: 1; transform: translateY(0); }
-        98%, 100% { opacity: 0; }
-      }
-      @keyframes msg3 {
-        0%, 42% { opacity: 0; transform: translateY(4px); }
-        45%, 94% { opacity: 1; transform: translateY(0); }
-        98%, 100% { opacity: 0; }
-      }
-      @keyframes msg4 {
-        0%, 56% { opacity: 0; transform: translateY(4px); }
-        59%, 94% { opacity: 1; transform: translateY(0); }
-        98%, 100% { opacity: 0; }
-      }
-      @keyframes msg5 {
-        0%, 70% { opacity: 0; transform: translateY(4px); }
-        73%, 94% { opacity: 1; transform: translateY(0); }
-        98%, 100% { opacity: 0; }
-      }
-      @keyframes finalCmd {
-        0%, 80% { opacity: 0; }
-        83%, 94% { opacity: 1; }
-        98%, 100% { opacity: 0; }
-      }
-      
-      @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
-      @keyframes pulseLive { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-
-      .window-anim { animation: openTerminal 12s infinite ease-out; transform-origin: top center; }
-      .anim-cmd { animation: cmdType 12s infinite; }
-      .anim-m1 { animation: msg1 12s infinite; }
-      .anim-m2 { animation: msg2 12s infinite; }
-      .anim-m3 { animation: msg3 12s infinite; }
-      .anim-m4 { animation: msg4 12s infinite; }
-      .anim-m5 { animation: msg5 12s infinite; }
-      .anim-final { animation: finalCmd 12s infinite; }
-      
-      .cursor { animation: blink 1s infinite; fill: #58a6ff; }
-      .live-dot { animation: pulseLive 1.5s infinite; fill: #2ea043; }
     </style>
   </defs>
 
-  <!-- Окно консоли с анимацией открытия -->
-  <g class="window-anim">
-    <!-- Фон окна -->
-    <rect x="1" y="1" width="718" height="248" rx="8" fill="url(#bgGrad)" stroke="#30363d" stroke-width="1.5"/>
+  <!-- Фон окна терминала (раскрывается сверху) -->
+  <rect x="1" y="1" width="718" height="248" rx="8" fill="url(#bgGrad)" stroke="#30363d" stroke-width="1.5">
+    <animate attributeName="height" values="32;248;248;32" keyTimes="0;0.05;0.95;1" dur="12s" repeatCount="indefinite" />
+  </rect>
 
-    <!-- Верхняя панель заголовка окна -->
-    <path d="M 1 9 C 1 4.5 4.5 1 9 1 L 711 1 C 715.5 1 719 4.5 719 9 L 719 32 L 1 32 Z" fill="#21262d"/>
-    <circle cx="18" cy="16" r="5.5" fill="#ff5f56"/>
-    <circle cx="36" cy="16" r="5.5" fill="#ffbd2e"/>
-    <circle cx="54" cy="16" r="5.5" fill="#27c93f"/>
-    <text x="360" y="21" text-anchor="middle" class="terminal-header">server@paper: ~ /plugins/DRplugins</text>
-    
-    <!-- Индикатор онлайна и TPS -->
-    <circle cx="682" cy="16" r="4.5" class="live-dot"/>
-    <text x="672" y="20" text-anchor="end" class="code" style="font-size: 11px; fill: #3fb950; font-weight: bold;">20.0 TPS</text>
+  <!-- Верхняя панель заголовка окна -->
+  <path d="M 1 9 C 1 4.5 4.5 1 9 1 L 711 1 C 715.5 1 719 4.5 719 9 L 719 32 L 1 32 Z" fill="#21262d"/>
+  <circle cx="18" cy="16" r="5.5" fill="#ff5f56"/>
+  <circle cx="36" cy="16" r="5.5" fill="#ffbd2e"/>
+  <circle cx="54" cy="16" r="5.5" fill="#27c93f"/>
+  <text x="360" y="21" text-anchor="middle" class="terminal-header">server@paper: ~ /plugins/DRplugins</text>
+  
+  <!-- Индикатор онлайна и TPS -->
+  <circle cx="682" cy="16" r="4.5" fill="#2ea043">
+    <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" />
+  </circle>
+  <text x="672" y="20" text-anchor="end" class="code" style="font-size: 11px; fill: #3fb950; font-weight: bold;">20.0 TPS</text>
 
-    <!-- Вывод сообщений в консоли -->
-    <g class="code" transform="translate(20, 56)">
-      <!-- 0. Открытие и ввод команды запуска -->
-      <g class="anim-cmd" transform="translate(0, 0)">
-        <text y="0">
-          <tspan class="prefix">&gt; </tspan>
-          <tspan class="cmd">./start-server.sh --plugins=DRplugins</tspan>
-        </text>
-      </g>
+  <!-- Консольный вывод сообщений -->
+  <g class="code" transform="translate(20, 56)">
+    <!-- 0. Ввод команды запуска -->
+    <g>
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.05;0.07;0.94;0.96" dur="12s" repeatCount="indefinite" />
+      <text y="0">
+        <tspan class="prefix">&gt; </tspan>
+        <tspan class="cmd">./start-server.sh --plugins=DRplugins</tspan>
+      </text>
+    </g>
 
-      <!-- 1. Сообщение: Старт ядра сервера -->
-      <g class="anim-m1" transform="translate(0, 24)">
-        <text y="0">
-          <tspan class="time">[12:00:01] </tspan>
-          <tspan class="info">[INFO] </tspan>
-          <tspan class="text">Starting Minecraft server on </tspan>
-          <tspan class="prefix">Paper 1.21.x / Folia</tspan>
-          <tspan class="text">...</tspan>
-        </text>
-      </g>
+    <!-- 1. Сообщение: Старт ядра сервера Paper -->
+    <g>
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.18;0.20;0.94;0.96" dur="12s" repeatCount="indefinite" />
+      <text y="24">
+        <tspan class="time">[12:00:01] </tspan>
+        <tspan class="info">[INFO] </tspan>
+        <tspan class="text">Starting Minecraft server on </tspan>
+        <tspan class="prefix">Paper 1.21.x / Folia</tspan>
+        <tspan class="text">...</tspan>
+      </text>
+    </g>
 
-      <!-- 2. Сообщение: Инициализация плагинов и Java 21 -->
-      <g class="anim-m2" transform="translate(0, 48)">
-        <text y="0">
-          <tspan class="time">[12:00:01] </tspan>
-          <tspan class="info">[INFO] </tspan>
-          <tspan class="prefix">[DRplugins] </tspan>
-          <tspan class="text">Loading Java 21 Core runtime | Build: </tspan>
-          <tspan class="accent">Gradle &amp; Maven</tspan>
-        </text>
-      </g>
+    <!-- 2. Сообщение: Инициализация плагинов и Java 21 -->
+    <g>
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.32;0.34;0.94;0.96" dur="12s" repeatCount="indefinite" />
+      <text y="48">
+        <tspan class="time">[12:00:01] </tspan>
+        <tspan class="info">[INFO] </tspan>
+        <tspan class="prefix">[DRplugins] </tspan>
+        <tspan class="text">Loading Java 21 Core runtime | Build: </tspan>
+        <tspan class="accent">Gradle &amp; Maven</tspan>
+      </text>
+    </g>
 
-      <!-- 3. Сообщение: Подключение баз данных -->
-      <g class="anim-m3" transform="translate(0, 72)">
-        <text y="0">
-          <tspan class="time">[12:00:02] </tspan>
-          <tspan class="info">[INFO] </tspan>
-          <tspan class="prefix">[DRplugins] </tspan>
-          <tspan class="text">Connecting HikariCP pool to </tspan>
-          <tspan class="highlight">MySQL / SQLite</tspan>
-          <tspan class="text">... </tspan>
-          <tspan class="success">[CONNECTED]</tspan>
-        </text>
-      </g>
+    <!-- 3. Сообщение: Подключение баз данных -->
+    <g>
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.46;0.48;0.94;0.96" dur="12s" repeatCount="indefinite" />
+      <text y="72">
+        <tspan class="time">[12:00:02] </tspan>
+        <tspan class="info">[INFO] </tspan>
+        <tspan class="prefix">[DRplugins] </tspan>
+        <tspan class="text">Connecting HikariCP pool to </tspan>
+        <tspan class="highlight">MySQL / SQLite</tspan>
+        <tspan class="text">... </tspan>
+        <tspan class="success">[CONNECTED]</tspan>
+      </text>
+    </g>
 
-      <!-- 4. Сообщение: Загрузка модулей плагинов -->
-      <g class="anim-m4" transform="translate(0, 96)">
-        <text y="0">
-          <tspan class="time">[12:00:02] </tspan>
-          <tspan class="info">[INFO] </tspan>
-          <tspan class="prefix">[DRplugins] </tspan>
-          <tspan class="text">Modules enabled: </tspan>
-          <tspan class="accent">Auction, Clans, Backpack, Auth, Economy, Spawners</tspan>
-        </text>
-      </g>
+    <!-- 4. Сообщение: Загрузка модулей плагинов -->
+    <g>
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.60;0.62;0.94;0.96" dur="12s" repeatCount="indefinite" />
+      <text y="96">
+        <tspan class="time">[12:00:02] </tspan>
+        <tspan class="info">[INFO] </tspan>
+        <tspan class="prefix">[DRplugins] </tspan>
+        <tspan class="text">Modules enabled: </tspan>
+        <tspan class="accent">Auction, Clans, Backpack, Auth, Economy, Spawners</tspan>
+      </text>
+    </g>
 
-      <!-- 5. Сообщение: Успешный запуск -->
-      <g class="anim-m5" transform="translate(0, 120)">
-        <text y="0">
-          <tspan class="time">[12:00:03] </tspan>
-          <tspan class="success">[DRplugins] ✔ All modules loaded in 0.32s! Server is ready.</tspan>
-        </text>
-      </g>
+    <!-- 5. Сообщение: Успешный запуск -->
+    <g>
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.74;0.76;0.94;0.96" dur="12s" repeatCount="indefinite" />
+      <text y="120">
+        <tspan class="time">[12:00:03] </tspan>
+        <tspan class="success">[DRplugins] ✔ All modules loaded in 0.32s! Server is ready.</tspan>
+      </text>
+    </g>
 
-      <!-- 6. Готовая строка с мигающим курсором -->
-      <g class="anim-final" transform="translate(0, 146)">
-        <text y="0">
-          <tspan class="prefix">&gt; </tspan>
-          <tspan class="text">drplugins status</tspan>
-          <rect x="146" y="-11" width="7" height="13" class="cursor"/>
-        </text>
-      </g>
+    <!-- 6. Готовая строка с мигающим курсором -->
+    <g>
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.84;0.86;0.94;0.96" dur="12s" repeatCount="indefinite" />
+      <text y="146">
+        <tspan class="prefix">&gt; </tspan>
+        <tspan class="text">drplugins status</tspan>
+      </text>
+      <rect x="146" y="135" width="7" height="13" fill="#58a6ff">
+        <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" />
+      </rect>
     </g>
   </g>
 </svg>
