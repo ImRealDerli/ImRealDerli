@@ -52,5 +52,5 @@
 
 <!-- Анимированный MacBook: клик по терминалу в Dock, переход в ~/DRplugins, старт ./start.sh и логи плагинов -->
 <p align="center">
-  <img src="./assets/macbook-interactive.svg" width="820" alt="Interactive MacBook" />
+  <img src="./assets/macbook.svg" width="820" alt="MacBook Minecraft Developer" />
 </p>
