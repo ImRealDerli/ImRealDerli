@@ -50,11 +50,11 @@
 
 ###
 
-<!-- Змейка активности коммитов -->
+<!-- Консоль загрузки плагинов Minecraft -->
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ImRealDerli/ImRealDerli/refs/heads/output/github-contribution-grid-snake-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/ImRealDerli/ImRealDerli/refs/heads/output/github-contribution-grid-snake.svg" />
-    <img alt="github-snake" src="https://raw.githubusercontent.com/ImRealDerli/ImRealDerli/refs/heads/output/github-contribution-grid-snake.svg" />
-  </picture>
+  <img src="https://raw.githubusercontent.com/ImRealDerli/ImRealDerli/main/assets/minecraft-console.svg" width="720" alt="Minecraft Server Console" />
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ImRealDerli/ImRealDerli/main/assets/minecraft-advancement.svg" width="340" alt="Minecraft Advancement" />
 </p>
