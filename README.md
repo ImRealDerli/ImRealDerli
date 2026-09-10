@@ -43,14 +43,14 @@
 
 ###
 
-<!-- Статистика профиля GitHub -->
+<!-- Статистика профиля GitHub (в стиле оригинальной темы Bear) -->
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ImRealDerli/ImRealDerli/main/assets/github-stats.svg" alt="GitHub Stats" />
+  <img src="./assets/github-stats.svg" alt="GitHub Stats" />
 </p>
 
 ###
 
 <!-- Анимированная консоль сервера Minecraft -->
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ImRealDerli/ImRealDerli/main/assets/minecraft-console.svg" width="720" alt="Minecraft Server Console" />
+  <img src="./assets/minecraft-console.svg" width="720" alt="Minecraft Server Console" />
 </p>
