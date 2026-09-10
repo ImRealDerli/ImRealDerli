@@ -43,9 +43,9 @@
 
 ###
 
-<!-- Статистика разработчика в стиле Minecraft -->
+<!-- Статистика профиля GitHub -->
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ImRealDerli/ImRealDerli/main/assets/minecraft-stats.svg" width="720" alt="Minecraft Dev Stats" />
+  <img src="https://github-readme-stats-fast.vercel.app/api?username=ImRealDerli&theme=bear&show_icons=true&hide_border=true&count_private=true&locale=ru">
 </p>
 
 ###
