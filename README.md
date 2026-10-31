@@ -15,6 +15,7 @@
   <img src="https://skillicons.dev/icons?i=github" height="40" alt="github logo" />
   <img width="12" />
   <img src="https://skillicons.dev/icons?i=idea" height="40" alt="intellij idea logo" />
+  <img src="ttps://skillicons.dev/icons?i=swift" height="40" alt="swift logo" />
 </div>
 
 ###
